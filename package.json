@@ -1,0 +1,21 @@
+{
+    "name": "@kazssym/redirect",
+    "version": "1.0.0-beta.1",
+    "homepage": "https://vx68k.bitbucket.io/redirect.js/",
+    "license": "MIT",
+    "files": [
+        "prepack.sh",
+        "**/*.js"
+    ],
+    "browser": {},
+    "repository": {
+        "type": "hg",
+        "url": "https://bitbucket.org/vx68k/redirect.js"
+    },
+    "scripts": {
+        "prepack": "sh ./prepack.sh"
+    },
+    "devDependencies": {
+        "terser": "~4"
+    }
+}
