@@ -1,0 +1,24 @@
+# bitbucket-pipelines.yml - Bitbucket Pipelines configuration
+# Copyright (C) 2017-2019 Kaz Nishimura
+#
+# Copying and distribution of this file, with or without modification, are
+# permitted in any medium without royalty provided the copyright notice and
+# this notice are preserved. This file is offered as-is, without any warranty.
+
+# See <https://confluence.atlassian.com/bitbucket/configure-bitbucket-pipelines-yml-792298910.html>
+# for details.
+---
+definitions:
+  steps:
+    - step: &test
+        name: Test
+        caches:
+          - node
+        script:
+          - npm install
+          - npm test
+image: node:8
+pipelines:
+  branches:
+    default:
+      - step: *test
