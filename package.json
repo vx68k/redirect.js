@@ -1,6 +1,11 @@
 {
     "name": "@kazssym/redirect",
     "version": "1.0.0-beta.2",
+    "keywords": [
+        "browser",
+        "es2015",
+        "module"
+    ],
     "homepage": "https://vx68k.bitbucket.io/redirect.js/",
     "license": "MIT",
     "files": [
