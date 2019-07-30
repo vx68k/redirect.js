@@ -2,8 +2,8 @@ This file documents the `redirect.js` script.
 
 # Description
 
-The `redirect.js` script redirects web browsers to another location without
-any server configuration.
+The `redirect.js` script redirects web browsers to another location *without
+any server configuration*.
 It is *not a script for Node.js* but for web browsers.
 
 [![(License)](https://img.shields.io/badge/license-MIT-blue.svg)][MIT]
