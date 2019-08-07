@@ -50,6 +50,13 @@
   */
  const PACKAGE_VERSION = "@PACKAGE_VERSION@";
 
+ /**
+  * Module name.
+  *
+  * @private
+  */
+ const MODULE_NAME = "redirect.js";
+
 /**
  * Redirects the browser to the location specified by the `data-new-location`
  * attribute of the root element or the `canonical` link of the document,
@@ -82,6 +89,5 @@ export function run()
     }
 }
 
-console.info("Loaded: %s (%s %s)", "redirect.js",
-    PACKAGE_NAME, PACKAGE_VERSION);
+console.info("Loaded: %s (%s %s)", MODULE_NAME, PACKAGE_NAME, PACKAGE_VERSION);
 run();
