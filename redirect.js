@@ -58,6 +58,24 @@
  const MODULE_NAME = "redirect.js";
 
 /**
+ * Returns the canonical link of the document.
+ *
+ * @return {HTMLLinkElement} the canonical link
+ */
+export function getCanonicalLink()
+{
+    let root = document.documentElement;
+    for (let link of root.getElementsByTagName("link")) {
+        for (let type of link.relList) {
+            if (type.toLowerCase() == "canonical") {
+                return link;
+            }
+        }
+    }
+    return null;
+}
+
+/**
  * Redirects the browser to the location specified by the `data-new-location`
  * attribute of the root element or the `canonical` link of the document,
  * if any.
@@ -73,13 +91,9 @@ export function run()
         newLocation = root.dataset.newLocation;
     }
     if (newLocation == null) {
-        for (let link of root.getElementsByTagName("link")) {
-            for (let type of link.relList) {
-                if (type.toLowerCase() == "canonical") {
-                    newLocation = link.href;
-                    break;
-                }
-            }
+        let link = getCanonicalLink();
+        if (link != null) {
+            newLocation = link.href;
         }
     }
 
