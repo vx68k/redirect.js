@@ -17,8 +17,21 @@ definitions:
         script:
           - npm install
           - npm test
+    - step: &package
+        name: Packaging
+        caches:
+          - node
+        script:
+          - npm install
+          - npm pack
+        artifacts:
+          - "*.tgz"
 image: node:8
 pipelines:
   branches:
     default:
       - step: *test
+  bookmarks:
+    deployment/test:
+      - step:
+        <<: *package
