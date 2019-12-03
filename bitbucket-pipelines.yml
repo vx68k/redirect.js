@@ -12,6 +12,7 @@ definitions:
   steps:
     - step: &test
         name: Test
+        image: node:8
         caches:
           - node
         script:
@@ -19,6 +20,7 @@ definitions:
           - npm test
     - step: &package
         name: Packaging
+        image: node:8
         caches:
           - node
         script:
@@ -26,12 +28,10 @@ definitions:
           - npm pack
         artifacts:
           - "*.tgz"
-image: node:8
 pipelines:
   branches:
-    default:
+    master:
       - step: *test
-  bookmarks:
     deployment/test:
       - step:
           <<: *package
