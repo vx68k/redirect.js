@@ -14,7 +14,7 @@
         "email": "kazssym@linuxfront.com"
     },
     "files": [
-        "prepack.sh",
+        "etc/*",
         "**/*.js"
     ],
     "browser": {},
@@ -23,7 +23,7 @@
         "url": "https://bitbucket.org/vx68k/redirect.js"
     },
     "scripts": {
-        "prepack": "sh ./prepack.sh"
+        "prepack": "sh ./etc/prepack.sh"
     },
     "devDependencies": {
         "terser": "~4"
