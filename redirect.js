@@ -1,4 +1,4 @@
-// redirect.js - browser script to redirect the browser to a new location
+// redirect.js - module script to redirect web browsers to another location
 // Copyright (C) 2019 Kaz Nishimura
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,7 @@
 // NOTE: this file is a module script.
 
 /**
- * Browser script to redirect the browser to a new location.
+ * Module script to redirect web browsers to another location.
  *
  * This script can be loaded in a *redirecting* HTML file as follows:
  *
