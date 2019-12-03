@@ -35,3 +35,6 @@ pipelines:
     deployment/test:
       - step:
           <<: *package
+  pull-requests:
+    "**":
+      - step: *test
