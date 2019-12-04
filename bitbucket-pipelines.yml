@@ -16,6 +16,7 @@ definitions:
         caches:
           - node
         script:
+          - npm config set unsafe-perm true
           - npm install
           - npm test
     - step: &package
@@ -24,6 +25,7 @@ definitions:
         caches:
           - node
         script:
+          - npm config set unsafe-perm true
           - npm install
           - npm pack
         artifacts:
