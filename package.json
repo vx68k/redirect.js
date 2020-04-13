@@ -19,8 +19,8 @@
     ],
     "browser": {},
     "repository": {
-        "type": "hg",
-        "url": "https://bitbucket.org/vx68k/redirect.js"
+        "type": "git",
+        "url": "https://github.com/vx68k/redirect.js.git"
     },
     "scripts": {
         "prepack": "sh ./etc/prepack.sh"
