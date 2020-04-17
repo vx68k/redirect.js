@@ -12,13 +12,31 @@ definitions:
   steps:
     - step: &test
         name: Test
+        image: node:8
         caches:
           - node
         script:
+          - npm config set unsafe-perm true
           - npm install
           - npm test
-image: node:8
+    - step: &package
+        name: Packaging
+        image: node:8
+        caches:
+          - node
+        script:
+          - npm config set unsafe-perm true
+          - npm install
+          - npm pack
+        artifacts:
+          - "*.tgz"
 pipelines:
   branches:
-    default:
+    master:
+      - step: *test
+    deployment/test:
+      - step:
+          <<: *package
+  pull-requests:
+    "**":
       - step: *test

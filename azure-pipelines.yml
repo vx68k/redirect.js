@@ -1,0 +1,39 @@
+# azure-pipelines.yml - configuration for Azure Pipelines
+# Copyright (C) 2020 Kaz Nishimura
+#
+# Copying and distribution of this file, with or without modification, are
+# permitted in any medium without royalty provided the copyright notice and
+# this notice are preserved.  This file is offered as-is, without any warranty.
+---
+trigger:
+  - master
+  - release/*
+  - feature/*
+stages:
+  - stage: Default
+    jobs:
+      - job: Build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: NodeTool@0
+          - bash: |
+              npm test
+            displayName: Test
+          - task: PublishTestResults@2
+            condition: succeededOrFailed()
+  - stage: Release
+    dependsOn: Default
+    condition:
+      and(succeeded(),
+        startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))
+    jobs:
+      - job: Upload
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: NodeTool@0
+          - task: Npm@1
+            inputs:
+              command: publish
+              publishEndpoint: npmjs

@@ -1,4 +1,4 @@
-// redirect.js - browser script to redirect the browser to a new location
+// redirect.js - module script to redirect web browsers to another location
 // Copyright (C) 2019 Kaz Nishimura
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,7 @@
 // NOTE: this file is a module script.
 
 /**
- * Browser script to redirect the browser to a new location.
+ * Module script to redirect web browsers to another location.
  *
  * This script can be loaded in a *redirecting* HTML file as follows:
  *
@@ -50,6 +50,31 @@
   */
  const PACKAGE_VERSION = "@PACKAGE_VERSION@";
 
+ /**
+  * Module name.
+  *
+  * @private
+  */
+ const MODULE_NAME = "redirect.js";
+
+/**
+ * Returns the canonical link of the document.
+ *
+ * @return {HTMLLinkElement} the canonical link
+ */
+export function getCanonicalLink()
+{
+    let root = document.documentElement;
+    for (let link of root.getElementsByTagName("link")) {
+        for (let type of link.relList) {
+            if (type.toLowerCase() == "canonical") {
+                return link;
+            }
+        }
+    }
+    return null;
+}
+
 /**
  * Redirects the browser to the location specified by the `data-new-location`
  * attribute of the root element or the `canonical` link of the document,
@@ -66,13 +91,9 @@ export function run()
         newLocation = root.dataset.newLocation;
     }
     if (newLocation == null) {
-        for (let link of root.getElementsByTagName("link")) {
-            for (let type of link.relList) {
-                if (type.toLowerCase() == "canonical") {
-                    newLocation = link.href;
-                    break;
-                }
-            }
+        let link = getCanonicalLink();
+        if (link != null) {
+            newLocation = link.href;
         }
     }
 
@@ -82,6 +103,5 @@ export function run()
     }
 }
 
-console.info("Loaded: %s (%s %s)", "redirect.js",
-    PACKAGE_NAME, PACKAGE_VERSION);
+console.info("Loaded: %s (%s %s)", MODULE_NAME, PACKAGE_NAME, PACKAGE_VERSION);
 run();
