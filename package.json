@@ -1,6 +1,6 @@
 {
-    "name": "@kazssym/redirect",
-    "version": "1.0.0-beta.4",
+    "name": "browser-redirect",
+    "version": "1.0.0",
     "description": "Module script to redirect web browsers to another location without any server configuration.",
     "keywords": [
         "browser",

@@ -16,7 +16,7 @@ for file in $SCRIPTS; do
         -e "s,[@]PACKAGE_NAME[@],$PACKAGE_NAME,g" \
         -e "s,[@]PACKAGE_VERSION[@],$PACKAGE_VERSION,g" \
         $file > "$distdir"/$distfile || exit 1
-    node ./node_modules/terser/bin/uglifyjs \
+    "`npm bin`"/terser \
         "$distdir"/$distfile \
         --module --output "$distdir"/${distfile%.js}.min.js || exit 1
 done
