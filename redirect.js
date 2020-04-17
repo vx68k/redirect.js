@@ -36,26 +36,26 @@
  * @module redirect.js
  */
 
- /**
-  * Package name.
-  *
-  * @private
-  */
- const PACKAGE_NAME = "@PACKAGE_NAME@";
+/**
+ * Package name.
+ *
+ * @private
+ */
+const PACKAGE_NAME = "@PACKAGE_NAME@";
 
- /**
-  * Package version.
-  *
-  * @private
-  */
- const PACKAGE_VERSION = "@PACKAGE_VERSION@";
+/**
+ * Package version.
+ *
+ * @private
+ */
+const PACKAGE_VERSION = "@PACKAGE_VERSION@";
 
- /**
-  * Module name.
-  *
-  * @private
-  */
- const MODULE_NAME = "redirect.js";
+/**
+ * Module name.
+ *
+ * @private
+ */
+const MODULE_NAME = "redirect.js";
 
 /**
  * Returns the canonical link of the document.
