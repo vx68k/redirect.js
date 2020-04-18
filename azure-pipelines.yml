@@ -17,6 +17,8 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - task: NodeTool@0
+            inputs:
+              versionSpec: 8.x
           - bash: |
               npm install-test
             displayName: Test
@@ -33,6 +35,8 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - task: NodeTool@0
+            inputs:
+              versionSpec: 8.x
           - bash: |
               npm install
             displayName: Install dependencies
