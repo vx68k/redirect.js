@@ -1,6 +1,6 @@
 {
     "name": "redirect-script",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Module script to redirect web browsers to another location without any server configuration.",
     "keywords": [
         "browser",
