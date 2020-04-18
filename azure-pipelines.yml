@@ -18,7 +18,7 @@ stages:
         steps:
           - task: NodeTool@0
           - bash: |
-              npm test
+              npm install-test
             displayName: Test
           - task: PublishTestResults@2
             condition: succeededOrFailed()
