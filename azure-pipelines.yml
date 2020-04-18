@@ -33,6 +33,9 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - task: NodeTool@0
+          - bash: |
+              npm install
+            displayName: Install dependencies
           - task: Npm@1
             inputs:
               command: publish
