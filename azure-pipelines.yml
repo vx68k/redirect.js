@@ -24,6 +24,13 @@ stages:
             displayName: Test
           - task: PublishTestResults@2
             condition: succeededOrFailed()
+          - bash: |
+              npm pack || exit $?
+              mkdir -p _dist
+              mv *.tgz _dist/
+            displayName: Make package archive
+          - publish: _dist
+            artifact: dist
   - stage: Release
     dependsOn: Default
     condition:
