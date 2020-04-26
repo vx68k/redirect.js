@@ -41,13 +41,11 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
+          - download: current
+            artifact: dist
           - task: NodeTool@0
-            inputs:
-              versionSpec: 8.x
-          - bash: |
-              npm install
-            displayName: Install dependencies
           - task: Npm@1
             inputs:
-              command: publish
-              publishEndpoint: npmjs
+              command: custom
+              customCommand: publish $(Agent.BuildDirectory)/dist/*.tgz
+              customEndpoint: npmjs
