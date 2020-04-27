@@ -14,8 +14,9 @@
         "email": "kazssym@linuxfront.com"
     },
     "files": [
-        "etc/*",
-        "**/*.js"
+        "*.js",
+        "etc",
+        "deploy"
     ],
     "browser": {},
     "repository": {
