@@ -1,4 +1,4 @@
-// prepack.js
+// prepare.js
 // Copyright (C) 2020 Kaz Nishimura
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
