@@ -59,7 +59,7 @@ function main()
         if (script.endsWith(".js")) {
             let result = Terser.minify(output, {});
             if (result.error != null) {
-                throw error;
+                throw result.error;
             }
             writeFileSync(`${outputdir}/${basename(script, ".js")}.min.js`,
                 result.code, {encoding: "UTF-8"});
