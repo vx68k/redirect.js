@@ -24,7 +24,7 @@
         "url": "https://github.com/vx68k/redirect.js.git"
     },
     "scripts": {
-        "prepack": "node ./etc/prepack.js"
+        "prepare": "node ./etc/prepack.js"
     },
     "devDependencies": {
         "terser": "~4"
