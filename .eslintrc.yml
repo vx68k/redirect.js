@@ -9,8 +9,16 @@ extends: eslint:recommended
 parserOptions:
   sourceType: module
 env:
-  browser: true
   es6: true
+  browser: true
+overrides:
+  - files:
+      - etc/*.js
+    parserOptions:
+      sourceType: script
+    env:
+      browser: false
+      node: true
 ignorePatterns:
   - /deploy/*
 root: true
