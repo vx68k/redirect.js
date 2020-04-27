@@ -1,6 +1,6 @@
 #!/bin/sh
 
-distdir="`pwd`"/dist
+distdir="`pwd`"/deploy
 
 PACKAGE_NAME="${npm_package_name:-redirect.js}"
 PACKAGE_VERSION="${npm_package_version:-(unversioned)}"
