@@ -83,7 +83,7 @@ export function getCanonicalLink()
  * This function passes any query string unchanged to the new location
  * unlike the `Refresh` meta hack.
  */
-export function run()
+export function redirect()
 {
     let root = document.documentElement;
     let newLocation = null;
@@ -104,4 +104,4 @@ export function run()
 }
 
 console.info("Loaded: %s (%s %s)", MODULE_NAME, PACKAGE_NAME, PACKAGE_VERSION);
-run();
+redirect();
