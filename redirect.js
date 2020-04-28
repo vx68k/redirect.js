@@ -1,5 +1,5 @@
 // redirect.js - module script to redirect web browsers to another location
-// Copyright (C) 2019 Kaz Nishimura
+// Copyright (C) 2019-2020 Kaz Nishimura
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
