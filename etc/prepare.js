@@ -32,12 +32,19 @@ let Terser = require("terser");
 const PACKAGE_NAME = env["npm_package_name"] || "redirect.js";
 const PACKAGE_VERSION = env["npm_package_version"] || "(unversioned)";
 
-// Options for {@link Terser.minify}.
+/**
+ * Options for `terser.minify`.
+ */
 const MINIFY_OPTIONS = {
     ecma: 6,
     module: true,
 };
 
+/**
+ * Prepares scripts for deployment.
+ *
+ * @param {Array<string>} args command-line arguments after the script name
+ */
 function main(args)
 {
     if (args == null) {
