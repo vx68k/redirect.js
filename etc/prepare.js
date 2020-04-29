@@ -24,7 +24,7 @@
 "use strict";
 
 let {basename} = require("path");
-let {exit, env, cwd} = require("process");
+let {argv, exit, env, cwd} = require("process");
 let {spawnSync} = require("child_process");
 let {mkdirSync, readFileSync, writeFileSync} = require("fs");
 let Terser = require("terser");
@@ -32,18 +32,18 @@ let Terser = require("terser");
 const PACKAGE_NAME = env["npm_package_name"] || "redirect.js";
 const PACKAGE_VERSION = env["npm_package_version"] || "(unversioned)";
 
-const SCRIPTS = [
-    "redirect.js",
-];
-
 // Options for {@link Terser.minify}.
 const MINIFY_OPTIONS = {
     ecma: 6,
     module: true,
 };
 
-function main()
+function main(args)
 {
+    if (args == null) {
+        args = [];
+    }
+
     let outputdir = `${cwd()}/deploy`;
 
     let result = spawnSync("rm", ["-rf", outputdir], {stdio: "inherit"});
@@ -52,7 +52,7 @@ function main()
     }
     mkdirSync(outputdir, {recursive: true});
 
-    for (let script of SCRIPTS) {
+    for (let script of args) {
         console.log("Processing '%s'", script);
 
         let content = readFileSync(script, {encoding: "UTF-8"});
@@ -74,5 +74,5 @@ function main()
 }
 
 if (require.main == module) {
-    exit(main())
+    exit(main(argv.slice(2)))
 }
