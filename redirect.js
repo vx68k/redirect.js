@@ -76,30 +76,27 @@ export function getCanonicalLink()
 }
 
 /**
- * Redirects the browser to the location specified by the `data-new-location`
- * attribute of the root element or the `canonical` link of the document,
- * if any.
+ * Redirects the browser to the location specified by <var>destination</var> or
+ * the `canonical` link of the current document, if any.
  *
  * This function passes any query string unchanged to the new location
  * unlike the `Refresh` meta hack.
+ *
+ * @param {string} destination a URL to which the current document is to be
+ * redirected, or a `null` value
  */
-export function redirect()
+export function redirect(destination)
 {
-    let root = document.documentElement;
-    let newLocation = null;
-    if ("newLocation" in root.dataset) {
-        newLocation = root.dataset.newLocation;
-    }
-    if (newLocation == null) {
+    if (destination == null) {
         let link = getCanonicalLink();
         if (link != null) {
-            newLocation = link.href;
+            destination = link.href;
         }
     }
 
-    if (newLocation != null) {
-        // Redirect the browser to the new location.
-        location.replace(newLocation + location.search);
+    if (destination != null) {
+        // To redirect the browser to the destination.
+        location.replace(destination + location.search);
     }
 }
 
