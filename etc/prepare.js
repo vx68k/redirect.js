@@ -36,6 +36,12 @@ const SCRIPTS = [
     "redirect.js",
 ];
 
+// Options for {@link Terser.minify}.
+const MINIFY_OPTIONS = {
+    ecma: 6,
+    module: true,
+};
+
 function main()
 {
     let outputdir = `${cwd()}/deploy`;
@@ -57,7 +63,7 @@ function main()
             output, {encoding: "UTF-8"});
 
         if (script.endsWith(".js")) {
-            let result = Terser.minify(output, {});
+            let result = Terser.minify(output, MINIFY_OPTIONS);
             if (result.error != null) {
                 throw result.error;
             }
