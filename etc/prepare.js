@@ -73,6 +73,6 @@ function main(args)
     }
 }
 
-if (require.main == module) {
+if (require.main === module) {
     exit(main(argv.slice(2)))
 }
