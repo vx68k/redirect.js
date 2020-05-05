@@ -5,7 +5,9 @@
     "keywords": [
         "browser",
         "es2015",
-        "module"
+        "module",
+        "es-module",
+        "dom"
     ],
     "homepage": "https://vx68k.bitbucket.io/redirect.js/",
     "license": "MIT",
