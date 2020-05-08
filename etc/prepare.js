@@ -41,6 +41,13 @@ const MINIFY_OPTIONS = {
 };
 
 /**
+ * Options for reading and writing files.
+ */
+const FILE_OPTIONS = Object.freeze({
+    encoding: "UTF-8",
+});
+
+/**
  * Prepares scripts for deployment.
  *
  * @param {Array<string>} args command-line arguments after the script name
@@ -62,12 +69,12 @@ function main(args)
     for (let script of args) {
         console.log("Processing '%s'", script);
 
-        let content = readFileSync(script, {encoding: "UTF-8"});
+        let content = readFileSync(script, FILE_OPTIONS);
         let output = content
             .replace(/[@]PACKAGE_NAME[@]/g, PACKAGE_NAME)
             .replace(/[@]PACKAGE_VERSION[@]/g, PACKAGE_VERSION);
         writeFileSync(`${outputdir}/${basename(script)}`,
-            output, {encoding: "UTF-8"});
+            output, FILE_OPTIONS);
 
         if (script.endsWith(".js")) {
             let result = Terser.minify(output, MINIFY_OPTIONS);
@@ -75,7 +82,7 @@ function main(args)
                 throw result.error;
             }
             writeFileSync(`${outputdir}/${basename(script, ".js")}.min.js`,
-                result.code, {encoding: "UTF-8"});
+                result.code, FILE_OPTIONS);
         }
     }
 }
