@@ -10,6 +10,9 @@
         "dom"
     ],
     "homepage": "https://vx68k.bitbucket.io/redirect.js/",
+    "bugs": {
+        "url": "https://bitbucket.org/kazssym/redirect.js/issues/new"
+    },
     "license": "MIT",
     "author": {
         "name": "Kaz Nishimura",
