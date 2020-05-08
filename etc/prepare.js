@@ -77,12 +77,12 @@ function main(args)
             output, FILE_OPTIONS);
 
         if (script.endsWith(".js")) {
-            let result = Terser.minify(output, MINIFY_OPTIONS);
-            if (result.error != null) {
-                throw result.error;
+            let minified = Terser.minify(output, MINIFY_OPTIONS);
+            if (minified.error != null) {
+                throw minified.error;
             }
             writeFileSync(`${outputdir}/${basename(script, ".js")}.min.js`,
-                result.code, FILE_OPTIONS);
+                minified.code, FILE_OPTIONS);
         }
     }
 }
