@@ -6,7 +6,7 @@
 # this notice are preserved.  This file is offered as-is, without any warranty.
 ---
 variables:
-  distName: redirect-script-2.0.0
+  distName: redirect-script-3.0.0
 trigger:
   - master
   - release/*
