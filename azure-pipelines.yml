@@ -17,11 +17,20 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - task: NodeTool@0
+            inputs:
+              versionSpec: 8.x
           - bash: |
-              npm test
+              npm install-test
             displayName: Test
           - task: PublishTestResults@2
             condition: succeededOrFailed()
+          - bash: |
+              npm pack || exit $?
+              mkdir -p _dist
+              mv *.tgz _dist/
+            displayName: Make package archive
+          - publish: _dist
+            artifact: dist
   - stage: Release
     dependsOn: Default
     condition:
@@ -32,8 +41,11 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
+          - download: current
+            artifact: dist
           - task: NodeTool@0
           - task: Npm@1
             inputs:
-              command: publish
-              publishEndpoint: npmjs
+              command: custom
+              customCommand: publish $(Agent.BuildDirectory)/dist/*.tgz
+              customEndpoint: npmjs

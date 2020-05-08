@@ -1,10 +1,13 @@
-This file documents the `redirect.js` script.
-
-# Description
+# Introduction
 
 The `redirect.js` script redirects web browsers to another location *without
 any server configuration*.
 It is *not a script for Node.js* but for web browsers.
+
+## License
+
+The `redirect.js` script is provided under the terms and conditions of the
+[MIT License][MIT].
 
 [![(License)](https://img.shields.io/badge/license-MIT-blue.svg)][MIT]
 
@@ -20,10 +23,10 @@ location specified by the `canonical` link of the document.
 </script>
 ```
 
-# Deployment
+## Deployment
 
-Copy `redirect.min.js` (and `redirect.js`) from the `dist` directory to a web
-server.
+Copy `redirect.min.js` (and `redirect.js`) from the `deploy` directory to your
+web server.
 
 # See also
 
