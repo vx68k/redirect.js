@@ -29,7 +29,7 @@ stages:
           - bash: |
               npm pack || exit $?
               mkdir -p _dist
-              mv '$(distName)'.tgz _dist/
+              mv -f '$(distName)'.* _dist/
             displayName: Make package archive
           - publish: _dist
             artifact: dist
