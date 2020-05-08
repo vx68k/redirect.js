@@ -20,7 +20,7 @@ stages:
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: 8.x
+              versionSpec: ~8
           - bash: |
               npm install-test
             displayName: Test
@@ -46,6 +46,8 @@ stages:
           - download: current
             artifact: dist
           - task: NodeTool@0
+            inputs:
+              versionSpec: ~8
           - task: Npm@1
             inputs:
               command: custom
