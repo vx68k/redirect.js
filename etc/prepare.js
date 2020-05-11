@@ -78,13 +78,22 @@ function main(args)
         writeFileSync(`${outputdir}/${name}`, filteredContent, FILE_OPTIONS);
 
         if (name.endsWith(".js")) {
-            let options = Object.assign({}, MINIFY_OPTIONS);
+            let minifiedName = name.replace(/\.js$/, ".min.js");
+            let options = Object.assign({}, MINIFY_OPTIONS, {
+                sourceMap: {
+                    url: `${minifiedName}.map`,
+                },
+            });
             let minified = Terser.minify({[name]: filteredContent}, options);
             if (minified.error != null) {
                 throw minified.error;
             }
-            writeFileSync(`${outputdir}/${basename(script, ".js")}.min.js`,
-                minified.code, FILE_OPTIONS);
+            writeFileSync(`${outputdir}/${minifiedName}`, minified.code,
+                FILE_OPTIONS);
+            if (minified.map != null) {
+                writeFileSync(`${outputdir}/${minifiedName}.map`,
+                    minified.map, FILE_OPTIONS);
+            }
         }
     }
 
