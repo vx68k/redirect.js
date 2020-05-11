@@ -86,6 +86,8 @@ function main(args)
                 minified.code, FILE_OPTIONS);
         }
     }
+
+    return 0;
 }
 
 if (require.main === module) {
