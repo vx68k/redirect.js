@@ -73,12 +73,13 @@ function main(args)
         let filteredContent = content
             .replace(/[@]PACKAGE_NAME[@]/g, PACKAGE_NAME)
             .replace(/[@]PACKAGE_VERSION[@]/g, PACKAGE_VERSION);
-        writeFileSync(`${outputdir}/${basename(script)}`,
-            filteredContent, FILE_OPTIONS);
 
-        if (script.endsWith(".js")) {
+        let name = basename(script);
+        writeFileSync(`${outputdir}/${name}`, filteredContent, FILE_OPTIONS);
+
+        if (name.endsWith(".js")) {
             let options = Object.assign({}, MINIFY_OPTIONS);
-            let minified = Terser.minify(filteredContent, options);
+            let minified = Terser.minify({[name]: filteredContent}, options);
             if (minified.error != null) {
                 throw minified.error;
             }
