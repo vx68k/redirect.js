@@ -35,10 +35,10 @@ const PACKAGE_VERSION = env["npm_package_version"] || "(unversioned)";
 /**
  * Options for `terser.minify`.
  */
-const MINIFY_OPTIONS = {
+const MINIFY_OPTIONS = Object.freeze({
     ecma: 6,
     module: true,
-};
+});
 
 /**
  * Options for reading and writing files.
@@ -77,7 +77,8 @@ function main(args)
             output, FILE_OPTIONS);
 
         if (script.endsWith(".js")) {
-            let minified = Terser.minify(output, MINIFY_OPTIONS);
+            let options = Object.assign({}, MINIFY_OPTIONS);
+            let minified = Terser.minify(output, options);
             if (minified.error != null) {
                 throw minified.error;
             }
