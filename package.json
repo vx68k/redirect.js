@@ -19,7 +19,7 @@
         "email": "kazssym@linuxfront.com"
     },
     "files": [
-        "*.js",
+        "browser/**/*.js",
         "etc",
         "deploy"
     ],
@@ -29,7 +29,7 @@
         "url": "https://github.com/vx68k/redirect.js.git"
     },
     "scripts": {
-        "prepare": "node ./etc/prepare.js *.js"
+        "prepare": "node ./etc/prepare.js browser/*.js"
     },
     "devDependencies": {
         "terser": "~4"
