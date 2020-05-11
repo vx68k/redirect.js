@@ -70,15 +70,15 @@ function main(args)
         console.log("Processing '%s'", script);
 
         let content = readFileSync(script, FILE_OPTIONS);
-        let output = content
+        let filteredContent = content
             .replace(/[@]PACKAGE_NAME[@]/g, PACKAGE_NAME)
             .replace(/[@]PACKAGE_VERSION[@]/g, PACKAGE_VERSION);
         writeFileSync(`${outputdir}/${basename(script)}`,
-            output, FILE_OPTIONS);
+            filteredContent, FILE_OPTIONS);
 
         if (script.endsWith(".js")) {
             let options = Object.assign({}, MINIFY_OPTIONS);
-            let minified = Terser.minify(output, options);
+            let minified = Terser.minify(filteredContent, options);
             if (minified.error != null) {
                 throw minified.error;
             }
