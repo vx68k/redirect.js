@@ -51,6 +51,7 @@ const FILE_OPTIONS = Object.freeze({
  * Prepares scripts for deployment.
  *
  * @param {Array<string>} args command-line arguments after the script name
+ * @return {Promise<number>} exit status
  */
 function main(args)
 {
@@ -97,9 +98,16 @@ function main(args)
         }
     }
 
-    return 0;
+    return new Promise(
+        (resolve) => {
+            resolve(0);
+        });
 }
 
 if (require.main === module) {
-    exit(main(argv.slice(2)))
+    main(argv.slice(2))
+    .then(
+        (status) => {
+            exit(status);
+        });
 }
