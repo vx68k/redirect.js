@@ -29,8 +29,8 @@ let {spawnSync} = require("child_process");
 let {mkdirSync, readFileSync, writeFileSync} = require("fs");
 let Terser = require("terser");
 
-const PACKAGE_NAME = env["npm_package_name"] || "redirect.js";
-const PACKAGE_VERSION = env["npm_package_version"] || "(unversioned)";
+const PACKAGE_NAME = env["npm_package_name"] || "unknown";
+const PACKAGE_VERSION = env["npm_package_version"] || "0.0.0";
 
 /**
  * Options for `terser.minify`.
