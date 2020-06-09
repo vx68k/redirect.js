@@ -32,6 +32,8 @@
         "prepare": "node ./etc/prepare.js browser/*.js"
     },
     "devDependencies": {
-        "terser": "~4"
+        "terser": "~4",
+        "static-server": "~2",
+        "selenium-webdriver": "~3"
     }
 }
