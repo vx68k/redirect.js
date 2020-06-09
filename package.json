@@ -20,8 +20,8 @@
     },
     "files": [
         "browser/**/*.js",
-        "etc",
-        "deploy"
+        "deploy/*",
+        "*.js"
     ],
     "browser": {},
     "repository": {
@@ -29,7 +29,7 @@
         "url": "https://github.com/vx68k/redirect.js.git"
     },
     "scripts": {
-        "prepare": "node ./etc/prepare.js browser/*.js"
+        "prepare": "node ./prepare.js browser/*.js"
     },
     "devDependencies": {
         "terser": "~4"
