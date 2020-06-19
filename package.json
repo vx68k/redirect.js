@@ -1,6 +1,6 @@
 {
     "name": "redirect-script",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "Module script to redirect web browsers to another location without any server configuration.",
     "keywords": [
         "browser",
@@ -19,9 +19,9 @@
         "email": "kazssym@linuxfront.com"
     },
     "files": [
-        "*.js",
-        "etc",
-        "deploy"
+        "browser/**/*.js",
+        "deploy/*",
+        "*.js"
     ],
     "browser": {},
     "repository": {
@@ -29,7 +29,7 @@
         "url": "https://github.com/vx68k/redirect.js.git"
     },
     "scripts": {
-        "prepare": "node ./etc/prepare.js *.js"
+        "prepare": "node ./prepare.js browser/*.js"
     },
     "devDependencies": {
         "terser": "~4"

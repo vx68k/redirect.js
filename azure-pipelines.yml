@@ -6,7 +6,7 @@
 # this notice are preserved.  This file is offered as-is, without any warranty.
 ---
 variables:
-  distName: redirect-script-2.0.0
+  distName: redirect-script-3.0.0
 trigger:
   - master
   - release/*
@@ -20,16 +20,19 @@ stages:
         steps:
           - task: NodeTool@0
             inputs:
-              versionSpec: 8.x
+              versionSpec: ~8
           - bash: |
-              npm install-test
+              npm install
+            displayName: Install
+          - bash: |
+              npm test
             displayName: Test
           - task: PublishTestResults@2
             condition: succeededOrFailed()
           - bash: |
               npm pack || exit $?
               mkdir -p _dist
-              mv '$(distName)'.tgz _dist/
+              mv -f '$(distName)'.* _dist/
             displayName: Make package archive
           - publish: _dist
             artifact: dist
@@ -46,8 +49,12 @@ stages:
           - download: current
             artifact: dist
           - task: NodeTool@0
-          - task: Npm@1
             inputs:
-              command: custom
-              customCommand: publish $(Agent.BuildDirectory)/dist/$(distName).tgz
+              versionSpec: ~8
+          - task: npmAuthenticate@0
+            inputs:
+              workingFile: .npmrc
               customEndpoint: npmjs
+          - bash: |
+              npm publish $(Agent.BuildDirectory)/dist/$(distName).tgz
+            displayName: Upload
