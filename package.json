@@ -32,6 +32,6 @@
         "prepare": "node ./prepare.js browser/*.js"
     },
     "devDependencies": {
-        "terser": "~4"
+        "terser": "~5"
     }
 }
